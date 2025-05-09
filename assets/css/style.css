@@ -238,6 +238,15 @@ button:hover{
 
 /* ----- Responsive ----- */
 @media (max-width: 768px) {
+
+    .nav-mobile-menu {
+    position: static; /* Ocupa lugar, desplaza al main */
+    z-index: auto;
+  }
+    main {
+    margin-top: 0; /* Ya no necesitas espacio extra */
+  }
+
   .nav-left,
   .nav-right {
     display: none;
@@ -263,4 +272,5 @@ button:hover{
     top: 1rem;
     left: 1rem;
   }
+  
 }

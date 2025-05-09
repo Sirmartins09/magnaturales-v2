@@ -7,50 +7,117 @@ body {
   margin: 0;
   padding: 0;
 }
-/*navegador*/
+:root {
+  --verde: #1d4020;
+  --blanco: #fff;
+}
+
 header {
-  background-color: #1D4020;
-  padding: 10px 0;
+  background-color: var(--verde);
 }
-nav{
+
+.nav {
   position: relative;
-}
-nav ul  {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-left li,
+.nav-right li {
   list-style: none;
-  gap: 10px;
-  padding: 0px;
-  margin: 0;
 }
 
-nav li img {
-  height: 200px;
-  width: auto;
-  display: block;
-}
-
-nav li a {
-  align-items: center;
+.nav-left a,
+.nav-right a {
+  color: var(--blanco);
   text-decoration: none;
-  color: #ffffff;
   font-weight: bold;
 }
- main{
-  background-color: #EAF4E1;
- }
 
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logo {
+  height: 50px;
+}
 
 .carrito {
-  position: absolute;
-  top: 5px;
-  right: 25px;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 50%;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  margin-left: auto;
+  color: var(--blanco);
 }
+
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  font-size: 2rem;
+  color: var(--blanco);
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+
+.nav-mobile-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--verde);
+  padding: 1rem 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+}
+
+.nav-mobile-menu li {
+  list-style: none;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.nav-mobile-menu a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logo-li {
+  order: 0;
+}
+
+.logo {
+  height: 50px;
+}
+
+/* Carrito */
+.carrito {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+}
+
+.carrito i,
+.carrito .contador-carrito {
+  color: var(--blanco);
+}
+
 
 .carrito a {
   color: #333;
@@ -167,4 +234,33 @@ button:hover{
   cursor: pointer;
   font-size: 1rem;
   border-radius: 5px;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .logo-container {
+    position: relative;
+    left: 0;
+    transform: none;
+    margin: auto;
+  }
+
+  .menu-toggle:checked ~ .nav-mobile-menu {
+    display: flex;
+  }
+
+  .carrito {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
 }

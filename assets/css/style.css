@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+/*navegador*/
+header {
+  background-color: #f4f4f4;
+  padding: 10px 0;
+}
+nav{
+  position: relative;
+}
+nav ul  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 10px;
+  padding: 0px;
+  margin: 0;
+}
+
+nav li img {
+  height: 200px;
+  width: auto;
+  display: block;
+}
+
+nav li a {
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.carrito {
+  position: absolute;
+  top: 5px;
+  right: 25px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.carrito a {
+  color: #333;
+  font-size: 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.contador-carrito {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/*----------------------*/
+/*tarjetas de productos*/
+/*---------------------*/
+.titulo-categoria{
+  background-color: #167022;
+  color: #fff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/*Carrito de compras*/
+
+.carrito-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.producto {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.producto img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.btn-eliminar {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  background: red;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#total {
+  text-align: right;
+  font-weight: bold;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+#btn-whatsapp {
+  margin-top: 2rem;
+  background: green;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+}

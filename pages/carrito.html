@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../pages/">Productos</a></li>
+                <li><img src="../assets/img/logo.png" alt="Logo MAG Naturales" /></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li class="carrito">
+                <a href="./pages/carrito.html" id="btn-carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </a>
+            </li>
+            </ul>
+        </nav>
+    </header>
+
+    <h1>Carrito de Compras</h1>
+    <div id="carrito-container"></div>
+    <div id="total"></div>
+    <button id="btn-whatsapp">Enviar pedido por WhatsApp</button>
+
+    <script>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const contenedor = document.getElementById("carrito-container");
+
+    function renderizarCarrito() {
+        contenedor.innerHTML = "";
+        let total = 0;
+
+        carrito.forEach((producto, index) => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+
+        div.innerHTML = `
+            <button class="btn-eliminar" data-index="${index}">×</button>
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <div>
+            <p><strong>${producto.nombre}</strong></p>
+            <p>Precio: $${producto.precio}</p>
+            </div>
+        `;
+
+        contenedor.appendChild(div);
+        total += producto.precio;
+        });
+
+        document.getElementById("total").textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+      // Eliminar producto
+    contenedor.addEventListener("click", e => {
+        if (e.target.classList.contains("btn-eliminar")) {
+        const index = e.target.getAttribute("data-index");
+        const producto = carrito[index];
+        const confirmar = confirm(`Se removerá el producto "${producto.nombre} x 1 Kg" de su pedido`);
+        if (confirmar) {
+            carrito.splice(index, 1);
+            localStorage.setItem("carrito", JSON.stringify(carrito));
+            renderizarCarrito();
+        }
+        }
+    });
+
+      // Enviar pedido por WhatsApp
+    document.getElementById("btn-whatsapp").addEventListener("click", () => {
+        if (carrito.length === 0) {
+        alert("El carrito está vacío");
+        return;
+        }
+
+        let mensaje = "Hola, quiero hacer el siguiente pedido:%0A";
+        let total = 0;
+
+        carrito.forEach(producto => {
+        mensaje += `- ${producto.nombre} x 1 Kg ($${producto.precio})%0A`;
+        total += producto.precio;
+        });
+
+        mensaje += `%0ATotal: $${total.toFixed(2)}`;
+        
+        const telefono = "5492615555555"; // Reemplazá con tu número de WhatsApp
+        const url = `https://wa.me/${telefono}?text=${mensaje}`;
+        window.open(url, "_blank");
+    });
+
+    renderizarCarrito();
+    </script>
+</body>
+</html>

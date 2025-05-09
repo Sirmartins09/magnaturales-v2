@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Íconos de Font Awesome (versión 6 beta 3): permite usar íconos como <i class="fas fa-phone"></i> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><img src="./assets/img/logo.png" alt="Logo MAG Naturales" /></li>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+      <div class="carrito">
+        <a href="./pages/carrito.html">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="contador-carrito">0</span>
+        </a>
+      </div>
+      
+    </nav>
+  </header>
+
+  <main >
+    <div class="titulo-categoria">
+
+      <h2>Frutos Secos</h2>
+    </div>
+
+    <div class="product-grid">
+      <!--frutos secos-->
+      <div class="product-card">
+        <img src="./assets/img/nuez.jpg" alt="nuez">
+        <h3>Nuez partida extralight</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+    
+      <!-- Repetí más product-card según tus productos -->
+      <div class="product-card">
+        <img src="./assets/img/almendra.jpg" alt="almendra">
+        <h3>Almendra Guara partida</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/pasas negras.jpg" alt="Pasas Negras">
+        <h3>Pasas Negras Flame</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/castaña de caju.jpg" alt="Castaña">
+        <h3>Castaña de Caju</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/mix-clasico.jpg" alt="Mani sin Sal">
+        <h3>Mix Clasico</h3>
+        <h4>(almendra,nuez, mani sin sal,<br> pasas negras)</h4>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/mix-energetico.png" alt="Mix Cervezero">
+        <h3>Mix Energetico</h3>
+        <h4>(almendra,nuez, mani sin sal,<br> pasas negras, castañas de caju)</h4>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/MIX-CERVECERO.jpg" alt="Mix Cervezero">
+        <h3>Mix Cervezero</h3>
+        <h4></h4>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/mix-tropical.jpg" alt="Mix Cervezero">
+        <h3>Mix Tropical</h3>
+        <h4>(mani,pasas,nuez,almendra,<br> banana, papaya,anana)</h4>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/mani sin sal.png" alt="Mix Cervezero">
+        <h3>Mani sin Sal </h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/mani-consal.png" alt="Mix Cervezero">
+        <h3>Mani Pelado con Sal</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/mani-saborizado.png" alt="Mix Cervezero">
+        <h3>Mani Saborizado</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+    </div>
+
+  <!------------->
+  <!--Semillas -->
+  <!------------->
+  
+    <div class="titulo-categoria">
+      <h2>Semillas</h2>
+    </div>
+    
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="./assets/img/chia.png" alt="semillas de chia">
+        <h3>Semillas de Chia</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+    
+      <!-- Repetí más product-card según tus productos -->
+      <div class="product-card">
+        <img src="./assets/img/girasol-pelado.png" alt="Semillas de girasol">
+        <h3>Girasol Pelado</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+
+      <div class="product-card">
+        <img src="./assets/img/semilla-de-lino_2.png" alt="semillas de Lino" class="product-img" />
+        <h3>Semillos de Lino</h3>
+        <p>$1300 / 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+      
+
+      <div class="product-card">
+        <img src="./assets/img/sesamo-blanco.png" alt="">
+        <h3>Sesamo Blnaco</h3>
+        <p>$1300/ 100gr</p>
+        <div class="controls">
+          <button onclick="updateQty(this, -100)">-</button>
+          <span class="qty">100</span> gr
+          <button onclick="updateQty(this, 100)">+</button>
+        </div>
+        <button
+          class="btn-añadir" 
+          data-nombre="Nueces"
+          data-precio="1300"
+          data-cantidad="100"
+        >
+          Añadir a la cesta
+        </button>
+      </div>
+    </div>
+    
+  </main>
+
+  <script>
+ // Obtener el contador
+const contador = document.querySelector(".contador-carrito");
+
+// Función para actualizar el número del carrito
+function actualizarContadorCarrito() {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  contador.textContent = totalItems;
+}
+
+// Función para añadir producto al carrito
+function añadirAlCarrito(nombre, precio, cantidad) {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+  const productoExistente = carrito.find(p => p.nombre === nombre && p.cantidad === cantidad);
+  
+  if (productoExistente) {
+    productoExistente.cantidad += 1;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarContadorCarrito();
+}
+
+// Event listener para todos los botones de "Añadir a la cesta"
+document.querySelectorAll(".btn-añadir").forEach(boton => {
+  boton.addEventListener("click", () => {
+    const nombre = boton.dataset.nombre;
+    const precio = parseInt(boton.dataset.precio);
+    const cantidad = parseInt(boton.dataset.cantidad); // 100gr
+
+    añadirAlCarrito(nombre, precio, cantidad);
+  });
+});
+
+// Al cargar la página, actualizamos el contador
+actualizarContadorCarrito();
+function updateQty(button, change) {
+  const productCard = button.closest('.product-card');
+  const qtySpan = productCard.querySelector('.qty');
+  let currentQty = parseInt(qtySpan.textContent);
+
+  // Asegura que siempre sea múltiplo de 100 y nunca menor a 100
+  let newQty = currentQty + change;
+  if (newQty < 100) newQty = 100;
+
+  qtySpan.textContent = newQty;
+
+  // Actualiza el data-cantidad del botón de añadir
+  const btnAñadir = productCard.querySelector('.btn-añadir');
+  btnAñadir.setAttribute('data-cantidad', newQty);
+}
+  </script>
+
+
+</body>
+</html>

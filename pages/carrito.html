@@ -52,48 +52,68 @@
 <script src="../js/carrito.js"></script>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  const contenedor = document.getElementById('carrito');
-  const totalSpan = document.getElementById('total');
-
-  if (carrito.length === 0) {
-    contenedor.innerHTML = '<p>El carrito está vacío.</p>';
-    totalSpan.textContent = '0';
-    return;
-  }
-
-  let total = 0;
-  const basePath = window.location.hostname === 'sirmartins09.github.io' 
-    ? '/magnaturales-v2/' 
-    : '/';
-
-  carrito.forEach((producto, index) => {
-    const subtotal = (producto.precio * producto.cantidad) / 100;
+  document.addEventListener('DOMContentLoaded', () => {
     
-    // Corregir ruta de la imagen
-    let imagenPath = producto.imagen;
-    if (!imagenPath.startsWith('http') && !imagenPath.startsWith('/')) {
-      imagenPath = basePath + imagenPath;
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contenedor = document.getElementById('carrito');
+    const totalSpan = document.getElementById('total');
+
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p>El carrito está vacío.</p>';
+      totalSpan.textContent = '0';
+      return;
     }
-    // Limpiar espacios en nombres de archivo
-    imagenPath = imagenPath.replace(/\s+/g, '-').toLowerCase();
-    
-    const item = document.createElement('div');
-    item.className = 'item-carrito';
-    item.innerHTML = `
-      <img src="${imagenPath}" alt="${producto.nombre}" onerror="this.src='${basePath}assets/img/placeholder.jpg'" width="60">
-      <span>${producto.nombre}</span>
-      <span>${producto.cantidad}gr</span>
-      <span>$${subtotal.toFixed(2)}</span>
-      <button onclick="eliminar(${index})">❌</button>
-    `;
-    contenedor.appendChild(item);
-    total += subtotal;
+
+    let total = 0;
+
+    carrito.forEach((producto, index) => {
+      const subtotal = (producto.precio * producto.cantidad) / 100;
+
+      const item = document.createElement('div');
+      item.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}" width="60">
+        <span>${producto.nombre}</span>
+        <span>${producto.cantidad}gr</span>
+        <span>$${subtotal.toFixed(2)}</span>
+        <button onclick="eliminar(${index})">❌</button>
+      `;
+      contenedor.appendChild(item);
+
+      total += subtotal;
+    });
+
+    totalSpan.textContent = total.toFixed(2);
   });
 
-  totalSpan.textContent = total.toFixed(2);
-});
+  function eliminar(index) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    location.reload();
+  }
+
+  document.getElementById('btn-whatsapp').addEventListener('click', () => {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    if (carrito.length === 0) {
+      alert('El carrito está vacío.');
+      return;
+    }
+
+    let mensaje = 'Hola, quiero hacer un pedido:\n\n';
+
+    carrito.forEach(producto => {
+      mensaje += `🛒 ${producto.nombre} - ${producto.cantidad}gr - $${((producto.precio * producto.cantidad) / 100).toFixed(2)}\n`;
+    });
+
+    const total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad) / 100, 0);
+    mensaje += `\n💰 Total: $${total.toFixed(2)}`;
+
+    const telefono = '5492615590045';
+    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(url, '_blank');
+  });
 </script>
 </body>
 </html>

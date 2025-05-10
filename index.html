@@ -505,7 +505,9 @@ function actualizarContadorCarrito() {
         const precio = parseFloat(boton.dataset.precio);
 
         // ✅ Convertimos ruta a absoluta para que funcione desde cualquier página
-        const imagen = '/' + boton.dataset.img.replace(/^\.?\/*/, '');
+        // Reemplaza la línea donde defines 'imagen' con:
+          const imagen = 'https://sirmartins09.github.io/magnaturales-v2/assets/img/' + 
+          boton.dataset.img.split('/').pop().toLowerCase().replace(/\s+/g, '-');
 
         const cantidad = parseInt(card.querySelector('.qty').textContent);
 

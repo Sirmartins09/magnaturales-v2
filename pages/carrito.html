@@ -52,68 +52,53 @@
 <script src="../js/carrito.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const contenedor = document.getElementById('carrito');
-    const totalSpan = document.getElementById('total');
-
-    if (carrito.length === 0) {
-      contenedor.innerHTML = '<p>El carrito está vacío.</p>';
-      totalSpan.textContent = '0';
-      return;
-    }
-
-    let total = 0;
-
-    carrito.forEach((producto, index) => {
-      const subtotal = (producto.precio * producto.cantidad) / 100;
-
-      const item = document.createElement('div');
-      item.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" width="60">
-        <span>${producto.nombre}</span>
-        <span>${producto.cantidad}gr</span>
-        <span>$${subtotal.toFixed(2)}</span>
-        <button onclick="eliminar(${index})">❌</button>
-      `;
-      contenedor.appendChild(item);
-
-      total += subtotal;
-    });
-
-    totalSpan.textContent = total.toFixed(2);
-  });
-
-  function eliminar(index) {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    carrito.splice(index, 1);
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    location.reload();
+  document.addEventListener('DOMContentLoaded', function() {
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  const contenedor = document.getElementById('carrito');
+  
+  if (carrito.length === 0) {
+    contenedor.innerHTML = '<p class="empty-cart">Tu carrito está vacío</p>';
+    document.getElementById('total').textContent = '0.00';
+    return;
   }
 
-  document.getElementById('btn-whatsapp').addEventListener('click', () => {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  let total = 0;
+  let html = '';
 
-    if (carrito.length === 0) {
-      alert('El carrito está vacío.');
-      return;
-    }
+  carrito.forEach((producto, index) => {
+    const subtotal = (producto.precio * producto.cantidad) / 100;
+    total += subtotal;
+    
+    // Construir URL confiable para GitHub Pages
+    const imagenUrl = producto.imagen.includes('github.io') ? 
+    producto.imagen : 
+    `https://sirmartins09.github.io/magnaturales-v2${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`;
 
-    let mensaje = 'Hola, quiero hacer un pedido:\n\n';
-
-    carrito.forEach(producto => {
-      mensaje += `🛒 ${producto.nombre} - ${producto.cantidad}gr - $${((producto.precio * producto.cantidad) / 100).toFixed(2)}\n`;
-    });
-
-    const total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad) / 100, 0);
-    mensaje += `\n💰 Total: $${total.toFixed(2)}`;
-
-    const telefono = '5492615590045';
-    const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
-
-    window.open(url, '_blank');
+    html += `
+      <div class="cart-item">
+        <img src="${imagenUrl}" 
+        alt="${producto.nombre}"
+        onerror="this.onerror=null;this.src='https://sirmartins09.github.io/magnaturales-v2/assets/img/placeholder.jpg'">
+        <div class="item-info">
+          <h3>${producto.nombre}</h3>
+          <p>${producto.cantidad}gr</p>
+        </div>
+        <div class="item-price">$${subtotal.toFixed(2)}</div>
+        <button class="remove-btn" onclick="eliminarDelCarrito(${index})">✕</button>
+      </div>
+    `;
   });
+
+  contenedor.innerHTML = html;
+  document.getElementById('total').textContent = total.toFixed(2);
+});
+
+function eliminarDelCarrito(index) {
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  carrito.splice(index, 1);
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+  location.reload();
+}
 </script>
 </body>
 </html>

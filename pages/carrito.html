@@ -53,52 +53,83 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  const contenedor = document.getElementById('carrito');
-  
-  if (carrito.length === 0) {
-    contenedor.innerHTML = '<p class="empty-cart">Tu carrito está vacío</p>';
-    document.getElementById('total').textContent = '0.00';
-    return;
-  }
-
-  let total = 0;
-  let html = '';
-
-  carrito.forEach((producto, index) => {
-    const subtotal = (producto.precio * producto.cantidad) / 100;
-    total += subtotal;
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contenedor = document.getElementById('carrito');
     
-    // Construir URL confiable para GitHub Pages
-    const imagenUrl = producto.imagen.includes('github.io') ? 
-    producto.imagen : 
-    `https://sirmartins09.github.io/magnaturales-v2${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`;
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p class="empty-cart">Tu carrito está vacío</p>';
+      document.getElementById('total').textContent = '0.00';
+      return;
+    }
 
-    html += `
-      <div class="cart-item">
-        <img src="${imagenUrl}" 
-        alt="${producto.nombre}"
-        onerror="this.onerror=null;this.src='https://sirmartins09.github.io/magnaturales-v2/assets/img/placeholder.jpg'">
-        <div class="item-info">
-          <h3>${producto.nombre}</h3>
-          <p>${producto.cantidad}gr</p>
+    let total = 0;
+    let html = '';
+
+    carrito.forEach((producto, index) => {
+      const subtotal = (producto.precio * producto.cantidad) / 100;
+      total += subtotal;
+      
+      const imagenUrl = producto.imagen.includes('github.io') ? 
+        producto.imagen : 
+        `https://sirmartins09.github.io/magnaturales-v2${producto.imagen.startsWith('/') ? '' : '/'}${producto.imagen}`;
+
+      html += `
+        <div class="cart-item">
+          <img src="${imagenUrl}" 
+          alt="${producto.nombre}"
+          onerror="this.onerror=null;this.src='https://sirmartins09.github.io/magnaturales-v2/assets/img/placeholder.jpg'">
+          <div class="item-info">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.cantidad}gr</p>
+          </div>
+          <div class="item-price">$${subtotal.toFixed(2)}</div>
+          <button class="remove-btn" onclick="eliminarDelCarrito(${index})">✕</button>
         </div>
-        <div class="item-price">$${subtotal.toFixed(2)}</div>
-        <button class="remove-btn" onclick="eliminarDelCarrito(${index})">✕</button>
-      </div>
-    `;
+      `;
+    });
+
+    contenedor.innerHTML = html;
+    document.getElementById('total').textContent = total.toFixed(2);
   });
 
-  contenedor.innerHTML = html;
-  document.getElementById('total').textContent = total.toFixed(2);
-});
+  function eliminarDelCarrito(index) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    location.reload();
+  }
 
-function eliminarDelCarrito(index) {
-  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-  carrito.splice(index, 1);
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  location.reload();
-}
+  // FUNCIÓN NUEVA PARA WHATSAPP
+  function enviarPedidoWhatsApp() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    
+    if (carrito.length === 0) {
+      alert('🚫 Tu carrito está vacío. Agrega productos antes de enviar.');
+      return;
+    }
+
+    let mensaje = '¡Hola MAG Naturales!%0A%0A';
+    mensaje += 'Mi pedido es:%0A%0A';
+    mensaje += '------------------------------%0A';
+    
+    carrito.forEach(item => {
+      const precioTotal = (item.precio * item.cantidad / 100).toFixed(2);
+      mensaje += `✔ ${item.nombre}%0A`;
+      mensaje += `   - Cantidad: ${item.cantidad}gr%0A`;
+      mensaje += `   - Precio: $${precioTotal}%0A%0A`;
+    });
+    
+    const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad / 100), 0);
+    mensaje += '------------------------------%0A';
+    mensaje += `*TOTAL: $${total.toFixed(2)}*%0A%0A`;
+    mensaje += '¿Podrían confirmarme disponibilidad y método de pago? ¡Gracias!';
+    
+    const telefono = '5492615590045';
+    window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');
+  }
+
+  // ASIGNAR EVENTO AL BOTÓN
+  document.getElementById('btn-whatsapp').addEventListener('click', enviarPedidoWhatsApp);
 </script>
 </body>
 </html>

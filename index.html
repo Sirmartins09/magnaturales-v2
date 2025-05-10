@@ -115,7 +115,7 @@
       </div>
 
       <div class="product-card">
-        <img src="./assets/img/castaña-de-caju.jpg" alt="Castaña">
+        <img src="./assets/img/castaña.jpg" alt="Castaña">
         <h3>Castaña de Caju</h3>
         <p>$1300/ 100gr</p>
         <div class="controls">
@@ -127,7 +127,7 @@
             class="btn-añadir"
             data-nombre="Castaña de Caju"
             data-precio="1300"
-            data-img="assets/img/castaña de caju.jpg"
+            data-img="assets/img/castaña.jpg"
         >
           Añadir a la cesta
         </button>
@@ -291,7 +291,7 @@
           <button onclick="updateQty(this, 100)">+</button>
         </div>
         <button
-           class="btn-añadir"
+            class="btn-añadir"
             data-nombre="Semillas de Chia"
             data-precio="1300"
             data-img="assets/img/chia.png"
@@ -367,7 +367,7 @@
       
     </div>
     
-     <!------------->
+  <!------------->
   <!--Otras Variedades-->
   <!------------->
   
@@ -408,7 +408,7 @@
         <button onclick="updateQty(this, 100)">+</button>
       </div>
       <button
-         class="btn-añadir"
+            class="btn-añadir"
             data-nombre="Azucar Mascabo"
             data-precio="1300"
             data-img="assets/img/azucar-mascabo.png"
@@ -427,7 +427,7 @@
         <button onclick="updateQty(this, 100)">+</button>
       </div>
       <button
-     class="btn-añadir"
+            class="btn-añadir"
             data-nombre="Curcuma"
             data-precio="1300"
             data-img="assets/img/curcuma1.png"
@@ -466,7 +466,7 @@
         <button onclick="updateQty(this, 100)">+</button>
       </div>
       <button
-       class="btn-añadir"
+            class="btn-añadir"
             data-nombre="Tutucas"
             data-precio="1300"
             data-img="assets/img/tutucas.jpg"
@@ -482,63 +482,53 @@
 
 <!--java-->
 <script>
-
 function updateQty(btn, change) {
-    const qtyElement = btn.parentElement.querySelector('.qty');
-    let cantidad = parseInt(qtyElement.textContent);
-    cantidad = Math.max(100, cantidad + change); // mínimo 100gr
-    qtyElement.textContent = cantidad;
-  }
+  const qtyElement = btn.parentElement.querySelector('.qty');
+  let cantidad = parseInt(qtyElement.textContent);
+  cantidad = Math.max(100, cantidad + change); // mínimo 100gr
+  qtyElement.textContent = cantidad;
+}
+
 function actualizarContadorCarrito() {
   const contador = document.querySelector('.contador-carrito');
   const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   contador.textContent = carrito.length;
 }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const botonesAgregar = document.querySelectorAll('.btn-añadir');
+document.addEventListener('DOMContentLoaded', () => {
+  actualizarContadorCarrito(); // ✅ Al iniciar la página
 
-    botonesAgregar.forEach(boton => {
-      boton.addEventListener('click', () => {
-        const card = boton.closest('.product-card');
-        const nombre = boton.dataset.nombre;
-        const precio = parseFloat(boton.dataset.precio);
+  const botonesAgregar = document.querySelectorAll('.btn-añadir');
 
-        // ✅ Convertimos ruta a absoluta para que funcione desde cualquier página
-        const imagen = '/' + boton.dataset.img.replace(/^\.?\/*/, '');
+  botonesAgregar.forEach(boton => {
+    boton.addEventListener('click', () => {
+      const card = boton.closest('.product-card');
+      const nombre = boton.dataset.nombre;
+      const precio = parseFloat(boton.dataset.precio);
 
-        const cantidad = parseInt(card.querySelector('.qty').textContent);
+      // ✅ Convertimos ruta a absoluta para evitar errores de ruta
+      const imagen = '/' + boton.dataset.img.replace(/^\.?\/*/, '');
+      const cantidad = parseInt(card.querySelector('.qty').textContent);
 
-        const producto = { nombre, precio, imagen, cantidad };
+      const producto = { nombre, precio, imagen, cantidad };
 
-        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-        const index = carrito.findIndex(item => item.nombre === nombre);
-        if (index !== -1) {
-          carrito[index].cantidad += cantidad;
-        } else {
-          carrito.push(producto);
-        }
+      const index = carrito.findIndex(item => item.nombre === nombre);
+      if (index !== -1) {
+        carrito[index].cantidad += cantidad;
+      } else {
+        carrito.push(producto);
+      }
 
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        alert(`${cantidad}gr de ${nombre} añadido al carrito.`);
-      });
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      actualizarContadorCarrito(); // ✅ Se actualiza al añadir
+      alert(`${cantidad}gr de ${nombre} añadido al carrito.`);
     });
   });
-
-document.addEventListener('DOMContentLoaded', () => {
-  // ... tu código de agregar al carrito ...
-
-  actualizarContadorCarrito(); // ✅ lo llama al iniciar
-
-  // Dentro del click de "Añadir a la cesta"
-  localStorage.setItem('carrito', JSON.stringify(carrito));
-  actualizarContadorCarrito(); // ✅ lo llama al añadir
 });
-
-
-
 </script>
+
 
 <footer class="footer">
   <p>&copy; 2025 MAG Naturales. Todos los derechos reservados.</p>

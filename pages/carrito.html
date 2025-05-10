@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito de Compras</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
 <header>
@@ -14,7 +14,7 @@
 
     <ul class="nav-left">
       <li><a href="../index.html">Inicio</a></li>
-      <li><a href="../pages/otros-productos.html"> Otros Productos</a></li>
+      <li><a href="../pages/otros-productos.html">Otros Productos</a></li>
     </ul>
 
     <div class="logo-container">
@@ -25,11 +25,10 @@
       <li><a href="../pages/blog.html">Blog</a></li>
       <li><a href="../pages/contacto.html">Contacto</a></li>
     </ul>
-    </div>
 
     <!-- Menú mobile -->
     <ul class="nav-mobile-menu">
-      <li><a href="..index.html">Inicio</a></li>
+      <li><a href="../index.html">Inicio</a></li>
       <li><a href="../pages/otros-productos.html">Otros Productos</a></li>
       <li><a href="../pages/blog.html">Blog</a></li>
       <li><a href="../pages/contacto.html">Contacto</a></li>
@@ -37,19 +36,17 @@
   </nav>
 </header>
 
-  <h2 class="titulo-carrito">Carrito de Compras</h2>
-  <div id="carrito"></div>
-  <p class="total">Total: $<span id="total">0</span></p>
-  <div class="contenedor-boton">
+<h2 class="titulo-carrito">Carrito de Compras</h2>
+<div id="carrito"></div>
+<p class="total">Total: $<span id="total">0</span></p>
+<div class="contenedor-boton">
   <button id="btn-whatsapp">Enviar Pedido</button>
 </div>
 
-  <script src="../js/carrito.js"></script> <!-- Asegurate que apunta al JS correcto -->
+<script src="../js/carrito.js"></script>
 
-
-  <!--Java-->
-  <script>
-   document.addEventListener('DOMContentLoaded', () => {
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const contenedor = document.getElementById('carrito');
     const totalSpan = document.getElementById('total');
@@ -87,7 +84,8 @@
     localStorage.setItem('carrito', JSON.stringify(carrito));
     location.reload();
   }
-    document.getElementById('btn-whatsapp').addEventListener('click', () => {
+
+  document.getElementById('btn-whatsapp').addEventListener('click', () => {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     if (carrito.length === 0) {
@@ -104,15 +102,11 @@
     const total = carrito.reduce((acc, prod) => acc + (prod.precio * prod.cantidad) / 100, 0);
     mensaje += `\n💰 Total: $${total.toFixed(2)}`;
 
-    // Número de WhatsApp en formato internacional, sin 0 ni 15
-    const telefono = '5492615590045'; // ← poné tu número real acá
-
+    const telefono = '5492615590045';
     const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
 
     window.open(url, '_blank');
   });
-
-
 </script>
 </body>
 </html>

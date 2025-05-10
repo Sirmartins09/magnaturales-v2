@@ -195,8 +195,17 @@ button:hover{
   text-align: center;
 }
 .titulo-carrito{
+<<<<<<< HEAD
   padding: 10px 50px;
   text-align: center;
+=======
+<<<<<<< HEAD
+  padding: 10px 20px;
+=======
+  padding: 10px 50px;
+  text-align: center;
+>>>>>>> ce8e50c (actualizaciones)
+>>>>>>> 5b95715ae97b67a703050252ba7d146b6b3c64d0
 }
 .total{
   text-align: center;

@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -126,7 +126,7 @@ header {
   position: absolute;
   top: -8px;
   right: -10px;
-  background-color: red;
+  background-color: rgb(216, 7, 7);
   color: white;
   font-size: 12px;
   padding: 2px 6px;
@@ -138,7 +138,7 @@ header {
 /*---------------------*/
 .titulo-categoria{
   background-color: #C5E1B5;
-  color: #000000;
+  color: #00350d;
   padding: 20px 50px;
 }
 
@@ -175,8 +175,16 @@ button {
 button:hover{
   background-color: #355E3B;
 }
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
 
-/*Carrito de compras*/
+/*Pagina Carrito de compras*/
 
 #carrito {
   display: flex;
@@ -187,7 +195,12 @@ button:hover{
   text-align: center;
 }
 .titulo-carrito{
+<<<<<<< HEAD
   padding: 10px 20px;
+=======
+  padding: 10px 50px;
+  text-align: center;
+>>>>>>> ce8e50c (actualizaciones)
 }
 .total{
   text-align: center;
@@ -229,12 +242,19 @@ button:hover{
   margin-top: 2rem;
   font-size: 1.2rem;
 }
+.contenedor-boton {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 
+  
+}
 #btn-whatsapp {
+  
   margin-top: 2rem;
   background: green;
   color: white;
-  padding: 0.8rem 1.2rem;
+  padding: 10px 40px;
   border: none;
   cursor: pointer;
   font-size: 1rem;

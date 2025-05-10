@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Íconos de Font Awesome (versión 6 beta 3): permite usar íconos como <i class="fas fa-phone"></i> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <header>
@@ -24,8 +26,8 @@
     </div>
 
     <ul class="nav-right">
-      <li><a href="#">Nosotros</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="./pages/blog.html">Blog</a></li>
+      <li><a href="./pages/contacto.html">Contacto</a></li>
     </ul>
 
     <div class="carrito">
@@ -38,9 +40,9 @@
     <!-- Menú mobile -->
     <ul class="nav-mobile-menu">
       <li><a href="./index.html">Inicio</a></li>
-      <li><a href="#">Productos</a></li>
-      <li><a href="#">Nosotros</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="./pages/otros-productos.html"> Otros Productos</a></li>
+      <li><a href="./pages/blog.html">Blog</a></li>
+      <li><a href="./pages/contacto.html">Contacto</a></li>
     </ul>
   </nav>
 </header>
@@ -487,6 +489,11 @@
     cantidad = Math.max(100, cantidad + change); // mínimo 100gr
     qtyElement.textContent = cantidad;
   }
+function actualizarContadorCarrito() {
+  const contador = document.querySelector('.contador-carrito');
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  contador.textContent = carrito.length;
+}
 
   document.addEventListener('DOMContentLoaded', () => {
     const botonesAgregar = document.querySelectorAll('.btn-añadir');
@@ -533,6 +540,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </script>
 
+<footer class="footer">
+  <p>&copy; 2025 MAG Naturales. Todos los derechos reservados.</p>
+</footer>
 
 
 

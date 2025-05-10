@@ -15,8 +15,8 @@
     <label for="menu-toggle" class="hamburger">&#9776;</label>
 
     <ul class="nav-left">
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Productos</a></li>
+      <li><a href="./index.html">Inicio</a></li>
+      <li><a href="./pages/otros-productos.html"> Otros Productos</a></li>
     </ul>
 
     <div class="logo-container">
@@ -64,7 +64,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="nuezpartidaextralight"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -85,7 +85,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="almendraguarapartida"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -104,7 +104,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="pasasnegrasflame"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -123,7 +123,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="castañadecaju"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -143,7 +143,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="mixclasico"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -163,7 +163,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="mixenergetico"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -183,7 +183,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="mixcervezero"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -203,7 +203,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="mixtropica"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -222,7 +222,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="manisinsal "
           data-precio="1300"
           data-cantidad="100"
         >
@@ -241,7 +241,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="manipeladoconsal"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -260,7 +260,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="manisaborizado"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -290,7 +290,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="semillasdechia"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -311,7 +311,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="girasolpelado"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -330,7 +330,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="semillosdelino"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -341,7 +341,7 @@
 
       <div class="product-card">
         <img src="./assets/img/sesamo-blanco.png" alt="Sesamo Blnaco">
-        <h3>Sesamo Blnaco</h3>
+        <h3>Sesamo Blanco</h3>
         <p>$1300/ 100gr</p>
         <div class="controls">
           <button onclick="updateQty(this, -100)">-</button>
@@ -350,7 +350,7 @@
         </div>
         <button
           class="btn-añadir" 
-          data-nombre="Nueces"
+          data-nombre="sesamoblanco"
           data-precio="1300"
           data-cantidad="100"
         >
@@ -385,7 +385,7 @@
       </div>
       <button
         class="btn-añadir" 
-        data-nombre="Nueces"
+        data-nombre="almohaditasdefrutilla"
         data-precio="1300"
         data-cantidad="100"
       >
@@ -406,7 +406,7 @@
       </div>
       <button
         class="btn-añadir" 
-        data-nombre="Nueces"
+        data-nombre="azucarmascabo"
         data-precio="1300"
         data-cantidad="100"
       >
@@ -425,7 +425,7 @@
       </div>
       <button
         class="btn-añadir" 
-        data-nombre="Nueces"
+        data-nombre="Curcuma"
         data-precio="1300"
         data-cantidad="100"
       >
@@ -445,7 +445,7 @@
       </div>
       <button
         class="btn-añadir" 
-        data-nombre="Nueces"
+        data-nombre="teverde"
         data-precio="1300"
         data-cantidad="100"
       >
@@ -464,7 +464,7 @@
       </div>
       <button
         class="btn-añadir" 
-        data-nombre="Nueces"
+        data-nombre="tutucas"
         data-precio="1300"
         data-cantidad="100"
       >
@@ -473,62 +473,91 @@
     </div>
   </main>
 
-  <script>
- // Obtener el contador
-const contador = document.querySelector(".contador-carrito");
-
-// Función para actualizar el número del carrito
-function actualizarContadorCarrito() {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-  contador.textContent = totalItems;
-}
-
-// Función para añadir producto al carrito
-function añadirAlCarrito(nombre, precio, cantidad) {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  const productoExistente = carrito.find(p => p.nombre === nombre && p.cantidad === cantidad);
-  
-  if (productoExistente) {
-    productoExistente.cantidad += 1;
-  } else {
-    carrito.push({ nombre, precio, cantidad: 1 });
+<script>
+  // Actualiza visualmente el contador del carrito
+  function actualizarContadorCarrito() {
+    const contador = document.querySelector(".contador-carrito");
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    contador.textContent = totalItems > 0 ? totalItems + "gr" : "0gr";
   }
 
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-  actualizarContadorCarrito();
-}
+  // Sumar o restar cantidad de un producto (mínimo 100gr)
+  function updateQty(button, cambio) {
+    const card = button.closest(".product-card");
+    const spanQty = card.querySelector(".qty");
+    let cantidad = parseInt(spanQty.textContent);
+    cantidad = Math.max(100, cantidad + cambio);
+    spanQty.textContent = cantidad;
 
-// Event listener para todos los botones de "Añadir a la cesta"
-document.querySelectorAll(".btn-añadir").forEach(boton => {
-  boton.addEventListener("click", () => {
-    const nombre = boton.dataset.nombre;
-    const precio = parseInt(boton.dataset.precio);
-    const cantidad = parseInt(boton.dataset.cantidad); // 100gr
+    // También actualiza el data-cantidad del botón
+    const btnAñadir = card.querySelector(".btn-añadir");
+    btnAñadir.setAttribute("data-cantidad", cantidad);
+  }
 
-    añadirAlCarrito(nombre, precio, cantidad);
+  // Añadir producto al carrito
+  function añadirAlCarrito(nombre, precio, cantidad) {
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const productoExistente = carrito.find(p => p.nombre === nombre);
+
+    if (productoExistente) {
+      productoExistente.cantidad += cantidad;
+    } else {
+      carrito.push({ nombre, precio, cantidad });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    actualizarContadorCarrito();
+  }
+
+  // Evento al cargar la página
+  document.addEventListener("DOMContentLoaded", function () {
+    actualizarContadorCarrito();
+
+    // Botones "Añadir a la cesta"
+    document.querySelectorAll(".btn-añadir").forEach(boton => {
+      boton.addEventListener("click", () => {
+        const card = boton.closest(".product-card");
+        const nombre = boton.dataset.nombre;
+        const precio = parseInt(boton.dataset.precio);
+        const cantidad = parseInt(card.querySelector(".qty").textContent);
+
+        añadirAlCarrito(nombre, precio, cantidad);
+        alert(`${nombre} añadido al carrito.`);
+      });
+    });
+
+    // Botón enviar por WhatsApp
+    const btnEnviar = document.getElementById("btnEnviarWsp");
+    if (btnEnviar) {
+      btnEnviar.addEventListener("click", () => {
+        const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+        if (carrito.length === 0) {
+          alert("El carrito está vacío.");
+          return;
+        }
+
+        let mensaje = "Hola! Quiero hacer un pedido:%0A";
+        let total = 0;
+
+        carrito.forEach(item => {
+          const subtotal = (item.precio * item.cantidad) / 100;
+          total += subtotal;
+          mensaje += `• ${item.nombre} - ${item.cantidad}gr - $${subtotal.toFixed(2)}%0A`;
+        });
+
+        mensaje += `%0ATotal: $${total.toFixed(2)}`;
+        const telefono = "5492615590045"; // Cambiá por tu número
+        const url = `https://wa.me/${telefono}?text=${mensaje}`;
+        window.open(url, "_blank");
+      });
+    }
   });
-});
+</script>
 
-// Al cargar la página, actualizamos el contador
-actualizarContadorCarrito();
-function updateQty(button, change) {
-  const productCard = button.closest('.product-card');
-  const qtySpan = productCard.querySelector('.qty');
-  let currentQty = parseInt(qtySpan.textContent);
 
-  // Asegura que siempre sea múltiplo de 100 y nunca menor a 100
-  let newQty = currentQty + change;
-  if (newQty < 100) newQty = 100;
-
-  qtySpan.textContent = newQty;
-
-  // Actualiza el data-cantidad del botón de añadir
-  const btnAñadir = productCard.querySelector('.btn-añadir');
-  btnAñadir.setAttribute('data-cantidad', newQty);
-}
-  </script>
 
 
 </body>

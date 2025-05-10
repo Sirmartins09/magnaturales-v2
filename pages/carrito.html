@@ -64,30 +64,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   let total = 0;
+  const basePath = window.location.hostname === 'sirmartins09.github.io' 
+    ? '/magnaturales-v2/' 
+    : '/';
 
   carrito.forEach((producto, index) => {
     const subtotal = (producto.precio * producto.cantidad) / 100;
     
-    // FIX: Corregir la ruta de la imagen para GitHub Pages
+    // Corregir ruta de la imagen
     let imagenPath = producto.imagen;
-    // Si la ruta no comienza con http o /, agregamos la base del repositorio
     if (!imagenPath.startsWith('http') && !imagenPath.startsWith('/')) {
-      imagenPath = '/magnaturales-v2/' + imagenPath;
+      imagenPath = basePath + imagenPath;
     }
-    // Limpiamos posibles dobles barras
-    imagenPath = imagenPath.replace(/([^:]\/)\/+/g, '$1');
-
+    // Limpiar espacios en nombres de archivo
+    imagenPath = imagenPath.replace(/\s+/g, '-').toLowerCase();
+    
     const item = document.createElement('div');
-    item.className = 'item-carrito'; // Agregamos clase para estilos
+    item.className = 'item-carrito';
     item.innerHTML = `
-      <img src="${imagenPath}" alt="${producto.nombre}" width="60">
-      <span class="nombre-producto">${producto.nombre}</span>
-      <span class="cantidad-producto">${producto.cantidad}gr</span>
-      <span class="precio-producto">$${subtotal.toFixed(2)}</span>
-      <button class="btn-eliminar" onclick="eliminar(${index})">❌</button>
+      <img src="${imagenPath}" alt="${producto.nombre}" onerror="this.src='${basePath}assets/img/placeholder.jpg'" width="60">
+      <span>${producto.nombre}</span>
+      <span>${producto.cantidad}gr</span>
+      <span>$${subtotal.toFixed(2)}</span>
+      <button onclick="eliminar(${index})">❌</button>
     `;
     contenedor.appendChild(item);
-
     total += subtotal;
   });
 

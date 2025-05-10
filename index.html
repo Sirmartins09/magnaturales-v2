@@ -418,7 +418,7 @@
     </div>
 
     <div class="product-card">
-      <img src="./assets/img/curcuma1.png" alt="Curcuma" class="product-img" />
+      <img src="./assets/img/curcuma.png" alt="Curcuma" class="product-img" />
       <h3>Curcuma</h3>
       <p>$1300 / 100gr</p>
       <div class="controls">
@@ -428,9 +428,9 @@
       </div>
       <button
             class="btn-añadir"
-            data-nombre="Curcuma"
+            data-nombre="curcuma"
             data-precio="1300"
-            data-img="assets/img/curcuma1.png"
+            data-img="assets/img/curcuma.png"
       >
         Añadir a la cesta
       </button>
@@ -438,7 +438,7 @@
     
 
     <div class="product-card">
-      <img src="./assets/img/teverde.png" alt="Té Verde">
+      <img src="./assets/img/teverde.png" alt="Te Verde">
       <h3>Té Verde</h3>
       <p>$1300/ 100gr</p>
       <div class="controls">
@@ -448,7 +448,7 @@
       </div>
     <button
   class="btn-añadir"
-  data-nombre="Té Verde"
+  data-nombre="Te Verde"
   data-precio="1300"
   data-img="assets/img/teverde.png"
 >
@@ -496,7 +496,7 @@ function actualizarContadorCarrito() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  actualizarContadorCarrito(); // ✅ Al iniciar la página
+  actualizarContadorCarrito();
 
   const botonesAgregar = document.querySelectorAll('.btn-añadir');
 
@@ -505,12 +505,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = boton.closest('.product-card');
       const nombre = boton.dataset.nombre;
       const precio = parseFloat(boton.dataset.precio);
+      
+      // ✅ SOLUCIÓN DEFINITIVA PARA LAS RUTAS:
+      // 1. Obtenemos la ruta base dependiendo del entorno
+      const isGitHubPages = window.location.hostname.includes('github.io');
+      const basePath = isGitHubPages ? '/magnaturales-v2/' : '/';
+      
+      // 2. Normalizamos la ruta de la imagen
+      let imagen = boton.dataset.img.replace(/^\.?\/*/, '');
+      
+      // 3. Si no empieza con 'assets/', lo agregamos
+      if (!imagen.startsWith('assets/')) {
+        imagen = 'assets/' + imagen;
+      }
+      
+      // 4. Eliminamos espacios y normalizamos
+      imagen = imagen.replace(/\s+/g, '-').toLowerCase();
+      
+      // 5. Construimos la ruta final
+      const imagenPath = basePath + imagen;
 
-      // ✅ Convertimos ruta a absoluta para evitar errores de ruta
-      const imagen = '/' + boton.dataset.img.replace(/^\.?\/*/, '');
       const cantidad = parseInt(card.querySelector('.qty').textContent);
 
-      const producto = { nombre, precio, imagen, cantidad };
+      const producto = { 
+        nombre, 
+        precio, 
+        imagen: imagenPath, // Usamos la ruta normalizada
+        cantidad 
+      };
 
       let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
@@ -522,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       localStorage.setItem('carrito', JSON.stringify(carrito));
-      actualizarContadorCarrito(); // ✅ Se actualiza al añadir
+      actualizarContadorCarrito();
       alert(`${cantidad}gr de ${nombre} añadido al carrito.`);
     });
   });

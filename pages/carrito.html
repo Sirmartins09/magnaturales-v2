@@ -43,54 +43,56 @@
   </nav>
 </header>
 
-  <h1>Tu Carrito</h1>
-  <div id="carrito-container"></div>
+  <h2 class="titulo-carrito">Carrito de compras</h2>
+  <div id="carrito"></div>
+  <p class="total">Total: $<span id="total">0</span></p>
+  <button id="btn-whatsapp">Enviar Pedido</button>
 
-  <h2 id="total-carrito"></h2>
+  <script src="../js/carrito.js"></script> <!-- Asegurate que apunta al JS correcto -->
 
-  <button id="btnEnviarWsp">Enviar pedido por WhatsApp</button>
 
-  <script src="./carrito.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-  const contenedor = document.getElementById("carrito-container");
-  const totalCarrito = document.getElementById("total-carrito");
+  <!--Java-->
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contenedor = document.getElementById('carrito');
+    const totalSpan = document.getElementById('total');
 
-  if (carrito.length === 0) {
-    contenedor.innerHTML = "<p>El carrito está vacío.</p>";
-    totalCarrito.textContent = "";
-    return;
-  }
+    if (carrito.length === 0) {
+      contenedor.innerHTML = '<p>El carrito está vacío.</p>';
+      totalSpan.textContent = '0';
+      return;
+    }
 
-  let total = 0;
-  contenedor.innerHTML = "";
+    let total = 0;
 
-  carrito.forEach(producto => {
-    const subtotal = (producto.precio * producto.cantidad) / 100;
-    total += subtotal;
+    carrito.forEach((producto, index) => {
+      const subtotal = (producto.precio * producto.cantidad) / 100;
 
-    const card = document.createElement("div");
-    card.classList.add("item-carrito");
+      const item = document.createElement('div');
+      item.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}" width="60">
+        <span>${producto.nombre}</span>
+        <span>${producto.cantidad}gr</span>
+        <span>$${subtotal.toFixed(2)}</span>
+        <button onclick="eliminar(${index})">❌</button>
+      `;
+      contenedor.appendChild(item);
 
-    // Supone que las imágenes están en la misma carpeta con el mismo nombre que el producto
-    const imgSrc = `./assets/img/${producto.nombre.toLowerCase()}.jpg`;
+      total += subtotal;
+    });
 
-    card.innerHTML = `
-      <img src="${imgSrc}" alt="${producto.nombre}" width="100">
-      <div>
-        <h3>${producto.nombre}</h3>
-        <p>Cantidad: ${producto.cantidad}gr</p>
-        <p>Precio unitario: $${producto.precio}/100gr</p>
-        <p>Subtotal: $${subtotal.toFixed(2)}</p>
-      </div>
-    `;
-
-    contenedor.appendChild(card);
+    totalSpan.textContent = total.toFixed(2);
   });
 
-  totalCarrito.textContent = `Total: $${total.toFixed(2)}`;
-});
+  function eliminar(index) {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito.splice(index, 1);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    location.reload();
+  }
+
+
 </script>
 </body>
 </html>

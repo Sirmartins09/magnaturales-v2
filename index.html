@@ -480,10 +480,10 @@
   </main>
 
 
- <!--java-->
+<!--java-->
 <script>
 
- function updateQty(btn, change) {
+function updateQty(btn, change) {
     const qtyElement = btn.parentElement.querySelector('.qty');
     let cantidad = parseInt(qtyElement.textContent);
     cantidad = Math.max(100, cantidad + change); // mínimo 100gr

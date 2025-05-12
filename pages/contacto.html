@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="nav">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+    <label for="menu-toggle" class="hamburger">&#9776;</label>
+
+    <ul class="nav-left">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="../pages/otros-productos.html">Otros Productos</a></li>
+    </ul>
+
+    <div class="logo-container">
+      <img src="../assets/img/logo.png" alt="Logo MAG Naturales" class="logo" />
+    </div>
+
+    <ul class="nav-right">
+      <li><a href="../pages/blog.html">Blog</a></li>
+      <li><a href="../pages/contacto.html">Contacto</a></li>
+    </ul>
+      <div class="carrito">
+      <a href="../pages/carrito.html">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="contador-carrito">0</span>
+      </a>
+    </div>
+
+    <!-- Menú mobile -->
+    <ul class="nav-mobile-menu">
+      <li><a href="../index.html">Inicio</a></li>
+      <li><a href="../pages/otros-productos.html">Otros Productos</a></li>
+      <li><a href="../pages/blog.html">Blog</a></li>
+      <li><a href="../pages/contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+    </header>
+    <main>
+        <section id="contacto" class="contacto">
+  <h2>Contacto</h2>
+  <p>¿Tenés alguna consulta? Escribinos y te respondemos a la brevedad.</p>
+  <form id="form-contacto" class="formulario-contacto" onsubmit="enviarWhatsApp(); return false;">
+    <div class="campo">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+    </div>
+    <div class="campo">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="tucorreo@mail.com" required>
+    </div>
+    <div class="campo">
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribí tu mensaje..." required></textarea>
+    </div>
+    <button type="submit" class="btn-enviar">Enviar</button>
+  </form>
+</section>
+
+<script>
+    function enviarWhatsApp() {
+    const nombre = document.getElementById("nombre").value;
+    const email = document.getElementById("email").value;
+    const mensaje = document.getElementById("mensaje").value;
+
+    const numero = "5492615590045"; // Tu número de WhatsApp
+
+    const texto = `Hola! 👋
+Soy *${nombre}*
+Email: ${email}
+
+Quiero consultar lo siguiente:
+${mensaje}`;
+
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
+    }
+</script>
+
+
+
+    </main>
+
+<footer class="footer">
+    <p>&copy; 2025 MAG Naturales. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

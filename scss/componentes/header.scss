@@ -1,0 +1,120 @@
+header {
+  background-color: var(--verde);
+}
+
+.nav {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-left li,
+.nav-right li {
+  list-style: none;
+}
+
+.nav-left a,
+.nav-right a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logo-container {
+    display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+
+.logo {
+  width: 170px;
+  height: auto;
+}
+
+.carrito {
+  margin-left: auto;
+  color: var(--blanco);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  font-size: 2rem;
+  color: var(--blanco);
+  display: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+
+.nav-mobile-menu {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--verde);
+  padding: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+}
+
+.nav-mobile-menu li {
+  list-style: none;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.nav-mobile-menu a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+
+/* Carrito */
+.carrito {
+  position: absolute;
+  right: 1.5rem;
+  top: 1rem;
+}
+
+.carrito i,
+.carrito .contador-carrito {
+  color: var(--blanco);
+}
+
+
+.carrito a {
+  color: #333;
+  font-size: 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.contador-carrito {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background-color: rgb(216, 7, 7);
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+}

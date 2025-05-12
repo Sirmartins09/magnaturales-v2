@@ -1,0 +1,42 @@
+/*----------------------*/
+/*tarjetas de productos*/
+/*---------------------*/
+.titulo-categoria{
+  background-color: #C5E1B5;
+  color: #00350d;
+  padding: 20px 50px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  border: 1px solid #A2C29A;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+button {
+  background-color: #4A7C59;
+  color: 	#FFFFFF;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 8px
+}
+button:hover{
+  background-color: #355E3B;
+}

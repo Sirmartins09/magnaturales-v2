@@ -3,10 +3,11 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
 }
+
 :root {
   --verde: #1d4020;
   --blanco: #fff;
@@ -46,11 +47,10 @@ header {
 }
 
 .logo-container {
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
-  
 
 .logo {
   width: 170px;
@@ -100,8 +100,6 @@ header {
   font-weight: bold;
 }
 
-
-
 /* Carrito */
 .carrito {
   position: absolute;
@@ -113,7 +111,6 @@ header {
 .carrito .contador-carrito {
   color: var(--blanco);
 }
-
 
 .carrito a {
   color: #333;
@@ -133,10 +130,19 @@ header {
   border-radius: 50%;
 }
 
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
 /*----------------------*/
 /*tarjetas de productos*/
 /*---------------------*/
-.titulo-categoria{
+.titulo-categoria {
   background-color: #C5E1B5;
   color: #00350d;
   padding: 20px 50px;
@@ -167,25 +173,17 @@ header {
 
 button {
   background-color: #4A7C59;
-  color: 	#FFFFFF;
+  color: #FFFFFF;
   padding: 5px 10px;
   cursor: pointer;
-  border-radius: 8px
+  border-radius: 8px;
 }
-button:hover{
+
+button:hover {
   background-color: #355E3B;
-}
-.footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
-  font-size: 0.9rem;
 }
 
 /*Pagina Carrito de compras*/
-
 #carrito {
   display: flex;
   flex-direction: column;
@@ -194,20 +192,19 @@ button:hover{
   margin: 0 auto;
   text-align: center;
 }
-.titulo-carrito{
 
+.titulo-carrito {
   padding: 10px 50px;
   text-align: center;
   padding: 10px 20px;
   padding: 10px 50px;
   text-align: center;
-
 }
-.total{
+
+.total {
   text-align: center;
   padding: 10px 20px;
 }
-
 
 .producto {
   border: 1px solid #ccc;
@@ -243,15 +240,14 @@ button:hover{
   margin-top: 2rem;
   font-size: 1.2rem;
 }
+
 .contenedor-boton {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
-
-  
 }
+
 #btn-whatsapp {
-  
   margin-top: 2rem;
   background: green;
   color: white;
@@ -271,41 +267,97 @@ button:hover{
   padding: 0 20px;
   text-align: center;
 }
+
+#contacto {
+  padding: 3rem 1rem;
+  background: #f8f9fa;
+}
+#contacto h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+#contacto p {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #555;
+}
+#contacto .formulario-contacto {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+#contacto .formulario-contacto .campo {
+  margin-bottom: 1.5rem;
+}
+#contacto .formulario-contacto .campo label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+#contacto .formulario-contacto .campo input,
+#contacto .formulario-contacto .campo textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+#contacto .formulario-contacto .campo input:focus,
+#contacto .formulario-contacto .campo textarea:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+#contacto .formulario-contacto .btn-enviar {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1e90ff;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#contacto .formulario-contacto .btn-enviar:hover {
+  background-color: #0f76d1;
+}
+
 /* ----- Responsive ----- */
 @media (max-width: 768px) {
-
-    .nav-mobile-menu {
+  .nav-mobile-menu {
     position: static; /* Ocupa lugar, desplaza al main */
     z-index: auto;
   }
-    main {
+  main {
     margin-top: 0; /* Ya no necesitas espacio extra */
   }
-
   .nav-left,
   .nav-right {
     display: none;
   }
-
   .hamburger {
     display: block;
   }
-
   .logo-container {
     position: relative;
     left: 0;
     transform: none;
     margin: auto;
   }
-
   .menu-toggle:checked ~ .nav-mobile-menu {
     display: flex;
   }
-
   .carrito {
     position: absolute;
     top: 1rem;
     left: 1rem;
   }
-  
 }
+
+/*# sourceMappingURL=style.css.map */

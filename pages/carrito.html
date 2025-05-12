@@ -122,7 +122,7 @@
     const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad / 100), 0);
     mensaje += '------------------------------%0A';
     mensaje += `*TOTAL: $${total.toFixed(2)}*%0A%0A`;
-    mensaje += '¿Podrían confirmarme disponibilidad y método de pago? ¡Gracias!';
+    mensaje += '¡Hola! 👋 Quiero realizar el siguiente pedido ¡Gracias!';
     
     const telefono = '5492615590045';
     window.open(`https://wa.me/${telefono}?text=${mensaje}`, '_blank');

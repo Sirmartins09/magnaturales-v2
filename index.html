@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mag Naturales Tienda</title>
+    <!-- Descripción del sitio para buscadores | Palabras clave para buscadores (SEO) -->
+    <meta name="description" content="Mag Naturales: productos naturales, semillas, especias, tés y más. Comprá online al mejore precio y atención personalizada en cada pedido.">
+    <meta name="keywords" content="productos naturales, semillas, especias, tés, saludables, orgánicos, hierbas, superalimentos, mix, tienda online">
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Íconos de Font Awesome (versión 6 beta 3): permite usar íconos como <i class="fas fa-phone"></i> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <!-- AOS (Animate On Scroll) para animaciones al hacer scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -48,7 +52,7 @@
 </header>
 
   <main >
-    <div class="titulo-categoria">
+    <div class="titulo-categoria" data-aos="zoom-in">
 
       <h2>Frutos Secos</h2>
     </div>
@@ -75,7 +79,7 @@
       </div>
 
     
-      <!-- Repetí más product-card según tus productos -->
+    
       <div class="product-card">
         <img src="./assets/img/almendra.jpg" alt="almendra">
         <h3>Almendra Guara partida</h3>
@@ -275,7 +279,7 @@
   <!--Semillas -->
   <!------------->
   
-    <div class="titulo-categoria">
+    <div class="titulo-categoria" data-aos="zoom-in">
       <h2>Semillas</h2>
     </div>
     
@@ -300,8 +304,6 @@
         </button>
       </div>
 
-    
-      <!-- Repetí más product-card según tus productos -->
       <div class="product-card">
         <img src="./assets/img/girasol-pelado.png" alt="Semillas de girasol">
         <h3>Girasol Pelado</h3>
@@ -371,7 +373,7 @@
   <!--Otras Variedades-->
   <!------------->
   
-  <div class="titulo-categoria">
+  <div class="titulo-categoria" data-aos="zoom-in">
     <h2>Otras Variedades</h2>
   </div>
   
@@ -397,7 +399,7 @@
     </div>
 
   
-    <!-- Repetí más product-card según tus productos -->
+    
     <div class="product-card">
       <img src="./assets/img/azucar-mascabo.png" alt="Azucar Mascabo">
       <h3>Azucar Mascabo</h3>
@@ -408,7 +410,7 @@
         <button onclick="updateQty(this, 100)">+</button>
       </div>
       <button
-         class="btn-añadir"
+            class="btn-añadir"
             data-nombre="Azucar Mascabo"
             data-precio="1300"
             data-img="assets/img/azucar-mascabo.png"
@@ -538,8 +540,10 @@ document.addEventListener('DOMContentLoaded', () => {
   actualizarContadorCarrito(); // ✅ lo llama al añadir
 });
 
-
-
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
 </script>
 
 <footer class="footer">

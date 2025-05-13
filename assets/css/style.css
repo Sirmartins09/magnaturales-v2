@@ -139,9 +139,6 @@ header {
   font-size: 0.9rem;
 }
 
-/*----------------------*/
-/*tarjetas de productos*/
-/*---------------------*/
 .titulo-categoria {
   background-color: #C5E1B5;
   color: #00350d;
@@ -161,9 +158,19 @@ header {
   padding: 15px;
   text-align: center;
   background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
-.product-card h3 p {
-  font-size: 30px;
+
+.product-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h3,
+.product-card p {
+  font-size: 18px;
+  margin: 10px 0;
 }
 
 .controls {
@@ -361,6 +368,12 @@ button:hover {
   padding: 1.5rem;
   text-align: left;
   border: 2px solid #ff9800;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog__entrada:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 .blog__entrada--promo {
   border: 2px solid #ff9800;
